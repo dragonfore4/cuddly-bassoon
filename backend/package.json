@@ -1,0 +1,19 @@
+{
+  "name": "simple-app-express-argocd",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "cd src/ && bun --hot server.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.5",
+    "express": "^5.1.0"
+  }
+}
