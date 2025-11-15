@@ -22,7 +22,10 @@ spec:
             - containerPort: 8080
           env:
             - name: APP_NAME
-              value: "cuddly-bassoon-backend"
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key:  APP_NAME
 
           readinessProbe:
             httpGet:
