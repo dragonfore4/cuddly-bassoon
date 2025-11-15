@@ -1,0 +1,38 @@
+# Dependency directories
+node_modules
+bun.lockb
+npm-debug.log
+yarn-error.log
+
+# Bun cache directories
+.bun
+.cache
+
+# Logs
+*.log
+logs
+debug.log
+pnpm-debug.log
+
+# Env files
+.env
+.env.*.local
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+*.swp
+
+# Git
+.git
+.gitignore
+
+# Build output
+dist
+build
+out
+
+# unit test output
+coverage
