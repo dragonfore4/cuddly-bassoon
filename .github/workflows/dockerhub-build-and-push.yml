@@ -52,4 +52,17 @@ jobs:
         run: |
           NEW_TAG="${{ steps.meta.outputs.tags }}"
           echo "Using new tag: $NEW_TAG"
-          
+
+          sed -i "s|image: .*|image: $NEW_TAG|" "$K8S_DEPLOY_FILE"
+
+          echo "Updated deployment.yaml:"
+          cat "$K8S_DEPLOY_FILE"
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add $K8S_DEPLOY_FILE
+          git commit -m "chore(k8s): update backend image to ${{ steps.meta.outputs.version }}"
+          git push
