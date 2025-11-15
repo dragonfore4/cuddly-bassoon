@@ -1,11 +1,9 @@
-import express from "express";
-import fs from "fs";
-import path from "path";
+import express, { type Express, type Request, type Response } from "express";
 
-const app = express();
+const app: Express = express();
 const port = Number(process.env.PORT) || 8080;
 
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   console.log("test")
   const appName = process.env.APP_NAME ?? "UnknownApp";
   console.log(`App Name: ${appName}`);
@@ -13,7 +11,7 @@ app.get("/", (req, res) => {
 });
 
 // Health endpoint - simple liveness
-app.get("/health", (_req, res) => {
+app.get("/health", (req: Request, res: Response) => {
   res.json({
     status: "ok",
     uptime: process.uptime(),
@@ -22,9 +20,9 @@ app.get("/health", (_req, res) => {
 });
 
 // Details endpoint - returns basic app metadata
-app.get("/details", (_req, res) => {
+app.get("/details", (req: Request, res: Response) => {
   // Short response: read one environment variable (APP_NAME)
-  const appName = process.env.APP_NAME ?? null;
+  const appName = process.env.APP_NAME ?? "Not defined";
   res.json({ appName });
 });
 
