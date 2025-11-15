@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: cuddly-bassoon-backend
+  labels:
+    app: cuddly-bassoon-backend
+spec:
+  to:
+    kind: Service
+    name: cuddly-bassoon-backend
+  port:
+    targetPort: http
+  tls:
+    termination: edge

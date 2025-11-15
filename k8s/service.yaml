@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cuddly-bassoon-backend
+  labels:
+    app: cuddly-bassoon-backend
+spec:
+  selector:
+    app: cuddly-bassoon-backend
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  type: ClusterIP

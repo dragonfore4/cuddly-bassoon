@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cuddly-bassoon-backend
+  labels:
+    app: cuddly-bassoon-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cuddly-bassoon-backend
+  template:
+    metadata:
+      labels:
+        app: cuddly-bassoon-backend
+    spec:
+      containers:
+        - name: backend
+          image: docker.io/dragonfore4/cuddly-bassoon-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APP_NAME
+              value: "cuddly-bassoon-backend"
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
