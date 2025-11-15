@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: docker.io/dragonfore4/cuddly-bassoon-backend:latest
+          image: dragonfore4/cuddly-bassoon-backend:sha-5bc579f
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
