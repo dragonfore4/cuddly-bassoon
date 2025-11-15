@@ -12,6 +12,7 @@ app.get("/", (req: Request, res: Response) => {
 
 // Health endpoint - simple liveness
 app.get("/health", (req: Request, res: Response) => {
+  console.log("health check hit")
   res.json({
     status: "ok",
     uptime: process.uptime(),
